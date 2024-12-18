@@ -1,0 +1,43 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Container Styling */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Styling */
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+/* Heading Styling */
+h1, h2 {
+    color: #333;
+}
+
+iframe {
+    width: 100%;
+    max-width: 560px;   /* Set a maximum width for larger screens */
+    height: auto;
+    aspect-ratio: 16 / 9; /* Maintains a 16:9 aspect ratio */
+    margin: 20px 0;       /* Adds space above and below the video */
+}
+
+audio {
+    display: block;      /* Make the audio element a block-level element */
+    margin: 20px auto;   /* Auto margin centers it horizontally */
+    max-width: 100%;     /* Ensure it doesn't overflow the container */
+}
