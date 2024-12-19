@@ -52,3 +52,16 @@ audio {
     text-decoration: underline;
     cursor: pointer;
 }
+
+.video-container {
+    position: relative;
+    width: 200%;
+    max-width: 1708px;    /* Optional: limit the width of the video */
+    margin: 0 auto;      /* Center the container horizontally */
+}
+
+.video-container iframe {
+    display: block;      /* Ensure the iframe behaves like a block element */
+    width: 100%;         /* Make the iframe take the full width of the container */
+    height: auto;        /* Maintain the aspect ratio */
+}
