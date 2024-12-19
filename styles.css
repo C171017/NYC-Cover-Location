@@ -41,3 +41,14 @@ audio {
     margin: 20px auto;   /* Auto margin centers it horizontally */
     max-width: 100%;     /* Ensure it doesn't overflow the container */
 }
+
+.song-title {
+    text-align: center;
+    margin-top: 10px; /* Optional spacing between the audio player and the text */
+}
+
+.song-title a {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
