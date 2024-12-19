@@ -44,14 +44,17 @@ audio {
 
 .song-title {
     text-align: center;
-    margin-top: 10px; /* Optional spacing between the audio player and the text */
+    margin-top: 10px;
+    font-family: 'Georgia', serif;      /* Change font to a more elegant serif type */
+    font-size: 1.5rem;                  /* Increase font size */
+    font-weight: bold;                  /* Make the text bold */
+    color: #FF4500;                      /* Use a deep indigo color */
+    text-transform: uppercase;          /* Make text uppercase for emphasis */
+    letter-spacing: 1px;                /* Add slight letter spacing for style */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
+    margin-bottom: 20px;                /* Add more space below the song title */
 }
 
-.song-title a {
-    color: blue;
-    text-decoration: underline;
-    cursor: pointer;
-}
 
 .video-container {
     position: relative;
@@ -64,4 +67,28 @@ audio {
     display: block;      /* Ensure the iframe behaves like a block element */
     width: 100%;         /* Make the iframe take the full width of the container */
     height: auto;        /* Maintain the aspect ratio */
+}
+
+h1 {
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+}
+
+.map-link {
+    text-align: center;    /* Center the content within the section */
+    margin: 20px auto;     /* Add some margin above and below */
+}
+
+.map-link a {
+    display: inline-block; /* Ensure the link behaves like a block for centering */
+    text-decoration: none; /* Optional: Remove default underline */
+    color: #007BFF;        /* Optional: Set a custom link color */
+    font-weight: bold;     /* Optional: Make the text bold */
+}
+
+.map-link a:hover {
+    text-decoration: underline; /* Add underline on hover */
 }
