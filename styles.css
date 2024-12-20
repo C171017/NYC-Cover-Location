@@ -48,7 +48,7 @@ audio {
     font-family: 'Georgia', serif;      /* Change font to a more elegant serif type */
     font-size: 1.5rem;                  /* Increase font size */
     font-weight: bold;                  /* Make the text bold */
-    color: #FF4500;                      /* Use a deep indigo color */
+    color: #FE0101;                      /* Use a deep indigo color */
     text-transform: uppercase;          /* Make text uppercase for emphasis */
     letter-spacing: 1px;                /* Add slight letter spacing for style */
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
