@@ -1,327 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NYC Album Cover Locations</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS file -->
+    <title>Dynamic Window with Fixed Positions</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <div class="container">
-        <h1>Album Cover NYC</h1>
-        <h4>Iconic album covers shot in New York City and their stories.</h4>
-
-        <section class="map-link">
-            <p>
-                <a href="https://guides.apple.com/?ug=Cg5Sb2NrIENvdmVyIE5ZQxJrGjM5OSBSaXZpbmd0b24gU3QsIE5ldyBZb3JrLCBOWSAgMTAwMDIsIFVuaXRlZCBTdGF0ZXMiEgmpuV5PK1xEQBG2%2BsD2Qn9SwCogUGF1bOKAmXMgQm91dGlxdWUgKEJlYXN0aWUgQm95cykSYBouOCBFeHRyYSBQbCwgTmV3IFlvcmssIE5ZICAxMDAwMywgVW5pdGVkIFN0YXRlcyISCcv9sinJXERAEWZOTAd0f1LAKhpSb2NrZXQgdG8gUnVzc2lhIChSYW1vbmVzKRJtGkRBbGJlcnQncyBHYXJkZW4sIDLigJM0MiBFIDJuZCBTdCwgTmV3IFlvcmssIE5ZICAxMDAwMywgVW5pdGVkIFN0YXRlcyISCQBgncnZXERAEdvneBZtf1LAKhFSYW1vbmVzIChSYW1vbmVzKRJkGi4zIEpvbmVzIFN0LCBOZXcgWW9yaywgTlkgIDEwMDE0LCBVbml0ZWQgU3RhdGVzIhIJKBnMbbldREARR5YHRiCAUsAqHlRoZSBGcmVld2hlZWxpbuKAmSAoQm9iIER5bGFuKRJlGjExNDIgTWVyY2VyIFN0LCBOZXcgWW9yaywgTlkgIDEwMDEyLCBVbml0ZWQgU3RhdGVzIhIJopGsv8NcREAR4hSmjOZ%2FUsAqHEFuIElubm9jZW50IE1hbiAoQmlsbHkgSm9lbCkSiAEaQUNlbnRyYWwgUGFyaywgMzXigJM0MSBFYXN0IERyLCBOZXcgWW9yaywgTlkgIDEwMDc1LCBVbml0ZWQgU3RhdGVzIhIJFPM29DRjREARvIg959t9UsAqL0VsZWN0cmljIExhZHlsYW5kICh0aGUgSmltaSBIZW5kcml4IEVYUEVSSUVOQ0UpEmoaMjk2IFN0IE1hcmtzIFBsLCBOZXcgWW9yaywgTlkgIDEwMDA5LCBVbml0ZWQgU3RhdGVzIhIJ3mYKhBhdREARQ4JPbwd%2FUsAqIFBoeXNpY2FsIEdyYWZpdHRpIChMZWQgWmVwcGVsaW4pEocBGkI1IEF24oCTNTMgU3QsIDHigJMyOSBFIDUzcmQgU3QsIE5ldyBZb3JrLCBOWSAgMTAwMjIsIFVuaXRlZCBTdGF0ZXMiEglIgYxZUWFEQBHtDc6rbn5SwCotV2VkbmVzZGF5IE1vcm5pbmcsIDMgQS5NLiAoU2ltb24gJiBHYXJmdW5rZWwpEmUaNTHigJM5OSBTbmlmZmVuIEN0LCBOZXcgWW9yaywgTlkgIDEwMDE2LCBVbml0ZWQgU3RhdGVzIhIJhmMDG6JfREAR%2B2SGqJZ%2BUsAqGFN0cmFuZ2UgRGF5cyAoVGhlIERvb3JzKRKOARpWTmV3IFlvcmsgVW5pdmVyc2l0eSBTY2hvb2wgb2YgTGF3LCAyNTAgU3VsbGl2YW4gU3QsIE5ldyBZb3JrLCBOWSAgMTAwMTIsIFVuaXRlZCBTdGF0ZXMiEglmRbEod11EQBFPz%2F1d939SwCogQWZ0ZXIgdGhlIEdvbGQgUnVzaCAoTmVpbCBZb3VuZykScho0NDkgU3QsIFcgNDd0aCBTdCwgTmV3IFlvcmssIE5ZICAxMDAzNiwgVW5pdGVkIFN0YXRlcyISCXfqZF0tYURAEdSBRgcDf1LAKiZTdG9yaWVzIGZyb20gdGhlIENpdHnigKYgKFAuSi4gSGFydmV5KRJfGjE0MDAgVyAyM3JkIFN0LCBOZXcgWW9yaywgTlkgIDEwMDExLCBVbml0ZWQgU3RhdGVzIhIJJ6hMfItfREARljCuCxmAUsAqFkRyZXNzZWQgdG8gS2lsbCAoS2lzcykSbhovMzA1IDV0aCBBdmUsIE5ldyBZb3JrLCBOWSAgMTAwMTYsIFVuaXRlZCBTdGF0ZXMiEgnnlOK1j19EQBG7%2BDLPFn9SwConQnJlYWtpbmcgQWxsIFRoZSBSdWxlcyAoUGV0ZXIgRnJhbXB0b24pEl8aLzc5NyA3dGggQXZlLCBOZXcgWW9yaywgTlkgIDEwMDE5LCBVbml0ZWQgU3RhdGVzIhIJHG3Nwo9hREARxk8Lkt1%2BUsAqGDUybmQgU3RyZWV0IChCaWxseSBKb2VsKRJ0GkJUaGUgTWV0cm9wb2xpdGFuIE11c2V1bSBvZiBBcnQsIE5ldyBZb3JrLCBOWSAgMTAwMjgsIFVuaXRlZCBTdGF0ZXMiEgk1gware2NEQBFvF3TkrX1SwCoaUHJldHplbCBMb2dpYyAoU3RlZWx5IERhbikSdBpHQ29sdW1iaWEgVW5pdmVyc2l0eSwgNTM1IFcgMTE2dGggU3QsIE5ldyBZb3JrLCBOWSAgMTAwMjcsIFVuaXRlZCBTdGF0ZXMiEgngR5r9aGdEQBFCQkVimX1SwCoVUGF0IEJvb25lIChQYXQgQm9vbmUpEoIBGkxNb3JuaW5nc2lkZSBQYXJrLCA2MOKAkzYyIE1vcm5pbmdzaWRlIERyLCBOZXcgWW9yaywgTlkgIDEwMDI2LCBVbml0ZWQgU3RhdGVzIhIJ898X%2BixnREARHU4PgWR9UsAqHlRoZSBLaWRzIEFyZSBBbHJpZ2h0IChUaGUgV2hvKQ%3D%3D" target="_blank">
-                    Explore the Location on Apple Maps
-                </a>
-            </p>
-        </section>
-
-
-        <!-- Section for 52nd Street Album Cover -->
-        
-        <h2>52nd Street (1978) | Billy Joel</h2>
-       
-        <p>Location: Manhattan alley near 52nd Street between 6th and 7th Avenues.</p>
-        
-        <p>Billy Joel stands in a gritty Manhattan alley, saxophone in hand. The backdrop is a nod to the energy of Midtown’s 52nd Street, known for its jazz clubs. The photo was shot near the CBS Records building where Joel recorded the album.</p>
-        
-        <img src="images/52nd-street-cover.jpg">
-
-        <p class="song-title">My Life</p>
-
-        <audio controls>
-            <source src="audio/mylife.m4a" type="audio/mp4">
-            Your browser does not support the audio element.
-        </audio>
-
-         <!-- After the Goldrush -->
-       
-        <h2>After the Gold Rush (1970) | Neil Young </h2>
-       
-        <p>Location: Northwest corner of Sullivan Street and West 3rd Street, Greenwich Village.</p>
-
-       <p>Neil Young’s reflective album cover shows a blurred image of him passing by a brick building in Greenwich Village. The black-and-white photograph captures the neighborhood’s timeless character.</p>
-
-        <img src="images/after-the-gold-rush.jpg">
-
-        <p class="song-title">Don't Let It Bring You Down</p>
-
-        <audio controls>
-            <source src="audio/dontlet.m4a" type="audio/mp4">
-            Your browser does not support the audio element.
-        </audio>
-        
-         <!-- An Innocent Man -->
-         <h2>An Innocent Man (1983) | Billy Joel</h2>
-       
-         <p>Location: 142 Mercer Street, SoHo.</p>
-
-         <p>Billy Joel sits on the steps of a classic cast-iron building in SoHo, evoking the doo-wop era’s street-corner nostalgia. The location’s vintage aesthetic perfectly matches the album’s homage to 1950s and ’60s music.</p>
- 
-         <img src="images/an-innocent-man.jpg">
- 
-         <p class="song-title">Uptown Girl</p>
-
-         <audio controls>
-             <source src="audio/uptown.m4a" type="audio/mp4">
-             Your browser does not support the audio element.
-         </audio>
-
-         <!--Breaking All The Rules -->
-         <h2>Breaking All the Rules (1981) | Peter Frampton</h2>
-         
-        <p>Location: 350 West 23rd Street, Chelsea.</p>
-
-        <p>Description: Peter Frampton is captured in a candid street scene in Chelsea, reflecting the album's raw and live-in-the-studio approach. The urban backdrop complements the album's rock aesthetic.</p>
- 
-         <img src="images/breaking-all-the-rules.jpg">
- 
-         <p class="song-title">Breaking All The Rules</p>
-
-         <audio controls>
-             <source src="audio/breaking.m4a" type="audio/mp4">
-             Your browser does not support the audio element.
-         </audio>
-         
-          <!--Dressed To Kill -->
-          <h2>Dressed to Kill (1975) | Kiss</h2>
-        
-          <p>Location: Southwest corner of 23rd Street and 8th Avenue, Chelsea.</p>
-  
-          <p>Kiss, dressed in suits and their signature makeup, pose on a wet sidewalk in Chelsea. The juxtaposition of their theatrical look against the urban grit gives the cover a raw, streetwise feel.</p>
-
-          <img src="images/dressed-to-kill.jpg">
-  
-          <p class="song-title">Rock And Roll All Nite</p>
-
-          <audio controls>
-              <source src="audio/rnrall.m4a" type="audio/mp4">
-              Your browser does not support the audio element.
-          </audio>
+    <div class="window">
+        <img src="images/map.jpg" alt="Map Image">
+        <!-- Red points (music locations, 12 total) -->
+        <div class="point red" style="top: 10%; left: 20%;" data-info="Pat Boone (Harlem)"></div>
+        <div class="point red" style="top: 25%; left: 30%;" data-info="Pretzel Logic (Steely Dan, Upper West Side)">
+        </div>
+        <div class="point red" style="top: 30%; left: 40%;" data-info="Electric Ladyland (Jimi Hendrix, Central Park)">
+        </div>
+        <div class="point red" style="top: 35%; left: 50%;"
+            data-info="Wednesday 3 A.M. (Simon & Garfunkel, Midtown East)"></div>
+        <div class="point red" style="top: 40%; left: 20%;" data-info="52nd Street (Billy Joel, Midtown West)"></div>
+        <div class="point red" style="top: 45%; left: 30%;" data-info="Stories from the City... (P.J. Harvey, Chelsea)">
+        </div>
+        <div class="point red" style="top: 50%; left: 40%;" data-info="Strange Days (The Doors, Garment District)">
+        </div>
+        <div class="point red" style="top: 55%; left: 50%;"
+            data-info="Breaking All The Rules (Peter Frampton, Greenwich Village)"></div>
+        <div class="point red" style="top: 60%; left: 20%;" data-info="Dressed to Kill (Kiss, SoHo)"></div>
+        <div class="point red" style="top: 65%; left: 30%;" data-info="The Freewheelin' (Bob Dylan, Tribeca)"></div>
+        <div class="point red" style="top: 70%; left: 40%;"
+            data-info="An Innocent Man (Billy Joel, Financial District)"></div>
 
 
-          <!--Electric Ladyland -->
-          <h2>Electric Ladyland (1968) | The Jimi Hendrix Experience</h2>
-         
-          <p>Location: Alice in Wonderland statue, Central Park</p>
-          
-          <p>The cover, originally intended by Jimi Hendrix, features The Jimi Hendrix Experience posing with children at the Alice in Wonderland statue in Central Park. Captured by Linda Eastman (later Linda McCartney), the whimsical scene reflects Hendrix’s playful side and the album’s expansive, psychedelic sound.</p>
-  
-          <img src="images/electric-ladyland.jpg">
-  
-          <p class="song-title">Still Raining, Still Dreaming</p>
+        <!-- Blue points (2 total, possibly different category) -->
+        <div class="point blue" style="top: 15%; left: 70%;"
+            data-info="Paul's Boutique (Beastie Boys, Lower East Side)"></div>
+        <div class="point blue" style="top: 80%; left: 70%;" data-info="Unknown Location (Brooklyn/Queens)"></div>
 
-          <audio controls>
-              <source src="audio/stillraining.m4a" type="audio/mp4">
-              Your browser does not support the audio element.
-          </audio>
-
-           <!--Pat Boone -->
-          <h2>Pat Boone (1956) | Pat Boone</h2>
-        
-          <p>Location: Columbia University, Morningside Heights.</p>
-
-          <p>Pat Boone’s self-titled album cover features the singer standing confidently on the steps of Columbia University. The academic setting reflects Boone’s wholesome and clean-cut image of the 1950s.</p>
- 
-          <img src="images/pat-boone.jpg">
- 
-          <p class="song-title">Ain't That A Shame</p>
-
-          <audio controls>
-             <source src="audio/aintthat.m4a" type="audio/mp4">
-             Your browser does not support the audio element.
-           </audio>
-        
-           <!--Paul's Boutique -->
-           <h2>Paul's Boutique (1989) | Beastie Boys</h2>
-        
-           <p>Location: Intersection of Rivington and Ludlow Streets, Lower East Side</p>
- 
-           <p>This vibrant cover captures a corner store on Rivington Street. The gritty authenticity of the Lower East Side matches the Beastie Boys’ eclectic and boundary-pushing sound.</p>
-
-           <img src="images/pauls.jpg">
- 
-           <p class="song-title">Shake Your Rump</p>
-
-           <audio controls>
-           <source src="audio/shakeyour.m4a" type="audio/mp4">
-            Your browser does not support the audio element.
-           </audio>
-
-         <!--Physical Graffiti -->
-           <h2>Physical Graffiti (1975) | Led Zeppelin</h2>
-          
-           <p>Location: 96 and 98 St. Mark’s Place, East Village.</p>
-
-           <p>The cover features two classic tenement buildings in the East Village. Their symmetrical facades and fire escapes embody the raw, urban energy of Led Zeppelin’s double album.</p>
-   
-           <img src="images/physical-graffiti.jpg">
-
-           <p class="song-title">Trampled Under Foot</p>
-
-           <audio controls>
-               <source src="audio/trampled.m4a" type="audio/mp4">
-               Your browser does not support the audio element.
-           </audio>
-
-         <!--Pretzel Logic -->
-            <h2>Pretzel Logic (1974) | Steely Dan</h2>
-            
-            <p>Location: Central Park entrance at 5th Avenue and 79th Street</p>
-
-            <p>The cover shows a pretzel vendor in front of a Central Park gate. This everyday New York scene captures the understated, enigmatic feel of Steely Dan’s music.</p>
-     
-            <img src="images/pretzel.jpg">
-     
-            <p class="song-title">Any Major Dude Will Tell You</p>
-
-            <audio controls>
-                <source src="audio/anymajor.m4a" type="audio/mp4">
-                Your browser does not support the audio element.
-            </audio>
-
-               <!--Ramones -->
-           <h2>Ramones (1976) | Ramones</h2>
-           
-           <p>Location: 6 East 2nd Street, East Village.</p>
-   
-           <p>The Ramones pose against a graffiti-covered brick wall. This gritty East Village location reflects the raw, rebellious spirit of punk rock’s pioneers.</p>
-
-           <img src="images/ramones.jpg">
-           
-           <p class="song-title">Blitzkrieg Bop</p>
-
-           <audio controls>
-               <source src="audio/blitzkrieg.m4a" type="audio/mp4">
-               Your browser does not support the audio element.
-           </audio>
-
-             <!--Rocket to Russia -->
-             <h2>Rocket to Russia (1977) | Ramones</h2>
-             
-             <p>Location: 6 East 2nd Street, East Village.</p>
-
-             <p>Shot at the same location as their debut album, this cover shows the Ramones embracing the same punk ethos, standing defiantly in front of the same brick wall.</p>
-     
-             <img src="images/rocket-to-russia.jpg">
-     
-             <p class="song-title">Sheena Is a Punk Rocker</p>
-
-             <audio controls>
-                 <source src="audio/sheena.m4a" type="audio/mp4">
-                 Your browser does not support the audio element.
-             </audio>
-
-              <!--Stories From The City, Stories From The Sea -->
-              <h2>Stories from the City, Stories from the Sea (2000) | PJ Harvey</h2>
-             
-              <p>Location: Times Square.</p>
-
-              <p>The album cover depicts PJ Harvey crossing a neon-lit street in Times Square at night, embodying the vibrant energy of New York City. This imagery aligns with the album's themes, inspired by Harvey's affection for the city and her experiences there.</p>
-      
-              <img src="images/stories.jpg">
-             
-              <p class="song-title">You Said Something</p>
-
-              <audio controls>
-                  <source src="audio/yousaid.m4a" type="audio/mp4">
-                  Your browser does not support the audio element.
-              </audio>
-            
-               <!--Strange Days -->
-             <h2>Strange Days (1967) | The Doors</h2>
-            
-             <p>Location: Sniffen Court, 150-158 East 36th Street, Murray Hill.</p>
-
-             <p>The cover features circus performers in a secluded cobblestone alley. This surreal location in Murray Hill perfectly matches the album’s eerie, dreamlike quality.</p>
-     
-             <img src="images/strangedays.jpg">
-     
-             <p class="song-title">People Are Strange</p>
-
-             <audio controls>
-                 <source src="audio/peopleare.m4a" type="audio/mp4">
-                 Your browser does not support the audio element.
-             </audio>
-          
-
-              <!--The Freewheelin' Bob Dylan -->
-              <h2>The Freewheelin’ Bob Dylan (1963) | Bob Dylan</h2>
-             
-              <p>Location: Jones Street and West 4th Street, Greenwich Village.</p>
-
-              <p>Bob Dylan and Suze Rotolo walk arm-in-arm down a snow-dusted street in Greenwich Village. The image captures the romance and defiant spirit of the folk music scene of the 1960s.</p>
-      
-              <img src="images/freewheelin.jpg">
-      
-              <p class="song-title">Blowin' in the Wind</p>
-
-              <audio controls>
-                  <source src="audio/blowing.m4a" type="audio/mp4">
-                  Your browser does not support the audio element.
-              </audio>
-               
-                <!--The Kids Are Alright -->
-                <h2>The Kids Are Alright (1979) | The Who</h2>
-              
-                <p>Carl Schurz Monument, 116th Street and Morningside Drive, Morningside Heights.</p>
-        
-                <p>The Who, wrapped in a Union Jack flag, lounge near the Carl Schurz Monument. This iconic image symbolizes the band’s blend of British heritage and rock rebellion.</p>
-
-                <img src="images/kidsall.jpg">
-
-            <div style="text-align: center;">
-                <iframe
-                    width="1920" 
-                    height="1080"
-                    src="https://www.youtube.com/embed/OiSKu7SbGNQ?start=16"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                </iframe>
-            </div>
-
-             <!--Wednesday Morning, 3 A.M. -->
-             <h2>Wednesday Morning, 3 A.M. (1964) | Simon & Garfunkel</h2>
-            
-             <p>Location: Fifth Avenue/53rd Street subway station.</p>
-
-             <p>Simon & Garfunkel stand on a subway platform, evoking the city’s late-night solitude. The image reflects the album’s contemplative, folk-driven atmosphere.
-
-             </p>
-     
-             <img src="images/wednesday.jpg">
-     
-             <p class="song-title">The Sound of Silence</p>
-
-             <audio controls>
-                 <source src="audio/soundsilence.m4a" type="audio/mp4">
-                 Your browser does not support the audio element.
-             </audio>
+        <!-- Ramones point -->
+        <div class="point red" style="top: 78%; left: 48%;" data-info="Ramones (East Village)" data-content="<h2>Ramones (1976) | Ramones</h2>
+                        <p>Location: 6 East 2nd Street, East Village.</p>
+                        <p>The Ramones pose against a graffiti-covered brick wall. This gritty East Village location reflects the raw, rebellious spirit of punk rock's pioneers.</p>
+                        <img src='images/ramones.jpg'>
+                        <p class='song-title'>Blitzkrieg Bop</p>
+                        <audio controls>
+                            <source src='audio/blitzkrieg.m4a' type='audio/mp4'>
+                            Your browser does not support the audio element.
+                        </audio>">
+        </div>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            let currentAudio = null;
-
-            // Select all audio elements
-            const audioElements = document.querySelectorAll("audio");
-
-            audioElements.forEach(audio => {
-                audio.addEventListener("play", () => {
-                    // Pause the currently playing audio (if any)
-                    if (currentAudio && currentAudio !== audio) {
-                        currentAudio.pause();
-                    }
-                    // Set the current audio to the one that's just been played
-                    currentAudio = audio;
-                });
-            });
-        });
-    </script>
+    <div id="info-box"></div>
+    <div id="content-overlay" class="hidden"></div>
+    <script src="script.js"></script>
 </body>
+
 </html>
