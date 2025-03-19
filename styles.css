@@ -1,269 +1,261 @@
 /* Ensure body takes full viewport with centering */
 html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Prevents scrolling */
-    background-color: #000; /* Black background for letterboxing */
-    font-family: 'Helvetica Neue', Arial, sans-serif; /* Modern font */
-  }
-  
-  /* The "window" that scales to fit viewport boundaries */
-  .window {
-    position: relative; /* Context for absolute positioning of points */
-    width: 100vw; /* Starts at full viewport width */
-    height: calc(100vw * 16 / 10); /* Height based on 10:16 ratio */
-    max-height: 100vh; /* Stops expanding when it hits viewport height */
-    max-width: calc(100vh * 10 / 16); /* Adjusts width if height is limiting */
-    overflow: hidden; /* Prevents content from spilling out */
-    background-color: #f0f0f0; /* Fallback color */
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7); /* Nice shadow around the map */
-  }
-  
-  /* Image inside the window */
-  .window img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Fills window without stretching */
-    display: block;
-  }
-  
-  /* Interactive points */
-  .window .point {
-    position: absolute; /* Relative to the window */
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    z-index: 10; /* Ensure points are above the map */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 255, 255, 0.3); /* Add shadow and white border */
-  }
-  
-  /* Different colored points */
-  .window .point.red {
-    background-color: rgba(255, 50, 50, 0.85); /* Slightly transparent red pins */
-  }
-  
-  .window .point.blue {
-    background-color: rgba(50, 50, 255, 0.85); /* Slightly transparent blue pins */
-  }
-  
-  .window .point.green {
-    background-color: rgba(50, 180, 50, 0.85); /* Slightly transparent green pins */
-  }
-  
-  .window .point.purple {
-    background-color: rgba(150, 50, 180, 0.85); /* Slightly transparent purple pins */
-  }
-  
-  .window .point.orange {
-    background-color: rgba(255, 120, 50, 0.85); /* Slightly transparent orange pins */
-  }
-  
-  .window .point:hover {
-    transform: scale(1.7); /* Grows on hover */
-    background-color: rgba(255, 215, 0, 0.9); /* Gold color on hover */
-    z-index: 20; /* Bring hovered point to front */
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7), 0 0 0 2px white; /* Glowing effect */
-  }
-  
-  /* Info box tooltip styling */
-  #info-box {
-    position: fixed;
-    padding: 10px 15px;
-    background-color: rgba(0, 0, 0, 0.85);
-    color: white;
-    border-radius: 6px;
-    display: none; /* Hidden by default */
-    max-width: 300px;
-    z-index: 100;
-    font-size: 14px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    pointer-events: none; /* Allows clicking through */
-    transform: translate(10px, 10px); /* Offset from cursor */
-  }
-  
-  /* Content overlay for detailed information */
-  #content-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.9); /* Very dark semi-transparent background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    backdrop-filter: blur(5px); /* Blur effect for modern browsers */
-    transition: opacity 0.3s ease;
-  }
-  
-  #content-overlay.fade-out {
-    opacity: 0;
-  }
-  
-  #content-overlay .content {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    max-width: 750px;
-    width: 80%;
-    max-height: 85vh;
-    overflow-y: auto;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.8);
-    position: relative;
-    animation: content-appear 0.4s ease-out;
-  }
-  
-  @keyframes content-appear {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-  }
-  
-  #content-overlay .content h2 {
-    margin-top: 0;
-    color: #111;
-    font-size: 28px;
-    font-weight: 700;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 12px;
-    margin-bottom: 20px;
-  }
-  
-  #content-overlay .content p {
-    margin: 15px 0;
-    color: #333;
-    line-height: 1.6;
-    font-size: 16px;
-  }
-  
-  #content-overlay .content .song-title {
-    font-weight: bold;
-    color: #000;
-    margin: 25px 0 10px;
-    font-size: 20px;
-    background-color: #f5f5f5;
-    padding: 8px 12px;
-    border-radius: 4px;
-    display: inline-block;
-  }
-  
-  #content-overlay .content audio {
-    width: 100%;
-    margin: 10px 0 25px;
-    border-radius: 30px;
-    background-color: #f0f0f0;
-  }
-  
-  /* Custom audio controls styling */
-  #content-overlay .content audio::-webkit-media-controls-panel {
-    background-color: #f0f0f0;
-  }
-  
-  #content-overlay .content audio::-webkit-media-controls-play-button {
-    background-color: #222;
-    border-radius: 50%;
-  }
-  
-  #content-overlay .content img {
-    max-width: 100%;
-    height: auto;
-    margin: 20px 0;
-    border-radius: 8px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
-    display: block;
-  }
-  
-  #content-overlay .content iframe {
-    max-width: 100%;
-    margin: 20px 0;
-    border-radius: 8px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  .hidden {
-    display: none !important;
-  }
-  
-  /* Close button for the overlay */
-  #content-overlay .close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 28px;
-    cursor: pointer;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.2s ease;
-    z-index: 1100;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  #content-overlay .close-btn:hover {
-    background-color: rgba(200, 0, 0, 0.8);
-    transform: scale(1.1);
-  }
-  
-  /* Message for when autoplay is blocked */
-  .audio-message {
-    color: #666;
-    font-style: italic;
-    background-color: #fff9e6;
-    padding: 5px 10px;
-    border-radius: 4px;
-    margin-bottom: 5px;
-    font-size: 14px;
-    border-left: 3px solid #ffd166;
-  }
-  
-  /* Responsive adjustments for smaller screens */
-  @media (max-width: 768px) {
-    #content-overlay .content {
-      max-width: 90%;
-      padding: 20px;
-    }
-    
-    #content-overlay .content h2 {
-      font-size: 22px;
-    }
-    
-    .window .point {
-      width: 16px;
-      height: 16px;
-    }
-  
-    #content-overlay .content iframe {
-      height: 240px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    #content-overlay .content {
-      padding: 15px;
-    }
-    
-    #content-overlay .content h2 {
-      font-size: 20px;
-    }
-    
-    .window .point {
-      width: 14px;
-      height: 14px;
-    }
-  
-    #content-overlay .content iframe {
-      height: 200px;
-    }
-  }
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Prevents scrolling */
+  background-color: #000; /* Black background for letterboxing */
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* Modern font */
+}
+
+/* The "window" that scales to fit viewport boundaries */
+.window {
+  position: relative; /* Context for absolute positioning of points */
+  width: 100vw; /* Starts at full viewport width */
+  height: calc(100vw * 16 / 10); /* Height based on 10:16 ratio */
+  max-height: 100vh; /* Stops expanding when it hits viewport height */
+  max-width: calc(100vh * 10 / 16); /* Adjusts width if height is limiting */
+  overflow: hidden; /* Prevents content from spilling out */
+  background-color: #f0f0f0; /* Fallback color */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7); /* Nice shadow around the map */
+}
+
+/* Image inside the window */
+.window img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Fills window without stretching */
+  display: block;
+}
+
+/* Album cover points - simplified for JavaScript sizing */
+.window .point {
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 10;
+  overflow: hidden;
+  border: 2px solid white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  /* Width and height will be set by JavaScript */
+}
+
+.window .point img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5; /* Adjust this value between 0 and 1 */
+  transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.window .point:hover {
+  transform: scale(1.5);
+  z-index: 20;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.7), 0 0 0 2px white;
+}
+
+.window .point:hover img {
+  opacity: 1;
+}
+
+/* Info box tooltip styling */
+#info-box {
+  position: fixed;
+  padding: 10px 15px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  border-radius: 6px;
+  display: none; /* Hidden by default */
+  max-width: 300px;
+  z-index: 100;
+  font-size: 14px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none; /* Allows clicking through */
+  transform: translate(10px, 10px); /* Offset from cursor */
+}
+
+/* Content overlay for detailed information */
+#content-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9); /* Very dark semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px); /* Blur effect for modern browsers */
+  transition: opacity 0.3s ease;
+}
+
+#content-overlay.fade-out {
+  opacity: 0;
+}
+
+#content-overlay .content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 750px;
+  width: 80%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.8);
+  position: relative;
+  animation: content-appear 0.4s ease-out;
+}
+
+@keyframes content-appear {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#content-overlay .content h2 {
+  margin-top: 0;
+  color: #111;
+  font-size: 28px;
+  font-weight: 700;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+#content-overlay .content p {
+  margin: 15px 0;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+#content-overlay .content .song-title {
+  font-weight: bold;
+  color: #000;
+  margin: 25px 0 10px;
+  font-size: 20px;
+  background-color: #f5f5f5;
+  padding: 8px 12px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+#content-overlay .content audio {
+  width: 100%;
+  margin: 10px 0 25px;
+  border-radius: 30px;
+  background-color: #f0f0f0;
+}
+
+/* Custom audio controls styling */
+#content-overlay .content audio::-webkit-media-controls-panel {
+  background-color: #f0f0f0;
+}
+
+#content-overlay .content audio::-webkit-media-controls-play-button {
+  background-color: #222;
+  border-radius: 50%;
+}
+
+#content-overlay .content img {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+  display: block;
+}
+
+#content-overlay .content iframe {
+  max-width: 100%;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Close button for the overlay */
+#content-overlay .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+  z-index: 1100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+#content-overlay .close-btn:hover {
+  background-color: rgba(200, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+/* Message for when autoplay is blocked */
+.audio-message {
+  color: #666;
+  font-style: italic;
+  background-color: #fff9e6;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  border-left: 3px solid #ffd166;
+}
+
+/* Apple Maps link styling */
+.map-link {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 50; /* Make sure it's above the map and points */
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 8px 12px;
+  border-radius: 25px;
+  backdrop-filter: blur(5px); /* Adds a frosted glass effect */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.map-link:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.map-link p {
+  margin: 0;
+  padding: 0;
+}
+
+.map-link a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+/* Add an Apple Maps icon */
+.map-link a::before {
+  content: "📍"; /* Map pin emoji */
+  margin-right: 8px;
+  font-size: 16px;
+}
